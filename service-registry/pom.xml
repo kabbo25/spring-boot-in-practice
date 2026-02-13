@@ -11,22 +11,14 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>ch05-securing-applications</artifactId>
-    <name>Ch05 - Securing Spring Boot Applications</name>
-    <description>Chapter 5: Securing Spring Boot applications</description>
+    <artifactId>service-registry</artifactId>
+    <name>Service Registry (Eureka Server)</name>
+    <description>Netflix Eureka service discovery server</description>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
     </dependencies>
 </project>

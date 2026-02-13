@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-user-roles-table_1.0
+      author: kabbo25@gmail.com
+      preConditions:
+        onFail: HALT
+        onError: HALT
+        # Ensure CT_USERS exists before creating roles table
+        - tableExists:
+            tableName: CT_USERS
+        # Ensure required columns exist for foreign key
+        - columnExists:
+            tableName: CT_USERS
+            columnName: id
+      changes:
+        - createTable:
+            tableName: CT_USER_ROLES
+            columns:
+              - column:
+                  name: id
+                  type: NUMBER(19)
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: NUMBER(19)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_user_roles_user
+                    references: CT_USERS(id)
+              - column:
+                  name: role_name
+                  type: VARCHAR2(50)
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropTable:
+            tableName: CT_USER_ROLES

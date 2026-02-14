@@ -2,6 +2,11 @@ databaseChangeLog:
   - changeSet:
       id: create-users-table_1.0
       author: kabbo25@gmail.com
+      preConditions:
+        - onFail: WARN
+        - not:
+            - tableExists:
+                tableName: CT_USERS
       changes:
         - createTable:
             tableName: CT_USERS

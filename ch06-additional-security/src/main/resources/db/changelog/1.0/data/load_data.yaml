@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: load_users_data_1.0
+      author: kabbo25@gmail.com
+      runOnChange: true
+      changes:
+        - delete:
+            tableName: CT_USERS
+        - loadData:
+            file: users.csv
+            relativeToChangelogFile: true
+            tableName: CT_USERS
